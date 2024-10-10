@@ -87,6 +87,8 @@ var depsRules = `
 	< internal/runtime/syscall
 	< internal/runtime/atomic
 	< internal/runtime/exithook
+	< internal/runtime/maps/internal/abi
+	< internal/runtime/maps
 	< internal/runtime/math
 	< runtime
 	< sync/atomic
@@ -460,7 +462,7 @@ var depsRules = `
 	< crypto/internal/boring
 	< crypto/boring;
 
-	crypto/internal/alias
+	crypto/internal/alias, math/rand/v2
 	< crypto/internal/randutil
 	< crypto/internal/nistec/fiat
 	< crypto/internal/nistec
@@ -645,6 +647,9 @@ var depsRules = `
 	CRYPTO-MATH, testing
 	< crypto/internal/cryptotest;
 
+	CGO, FMT
+	< crypto/rand/internal/seccomp;
+
 	# v2 execution trace parser.
 	FMT
 	< internal/trace/event;
@@ -682,7 +687,7 @@ var depsRules = `
 	< internal/trace/traceviewer;
 
 	# Coverage.
-	FMT, crypto/md5, encoding/binary, regexp, sort, text/tabwriter,
+	FMT, hash/fnv, encoding/binary, regexp, sort, text/tabwriter,
 	internal/coverage, internal/coverage/uleb128
 	< internal/coverage/cmerge,
 	  internal/coverage/pods,
